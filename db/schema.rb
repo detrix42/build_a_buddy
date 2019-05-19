@@ -11,18 +11,18 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_05_18_235756) do
-  
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  
+
   create_table "accessories", force: :cascade do |t|
     t.string "description"
   end
-  
+
   create_table "animals", force: :cascade do |t|
     t.string "description"
   end
-  
+
   create_table "inv_accessories", force: :cascade do |t|
     t.integer "accessory_id"
     t.integer "size_id"
@@ -30,19 +30,19 @@ ActiveRecord::Schema.define(version: 2019_05_18_235756) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  
+
   create_table "inv_animals", force: :cascade do |t|
-    t.integer "animal_id"
+    t.bigint "animal_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["animal_id"], name: "index_inv_animals_on_animal_id"
   end
-  
+
   create_table "sizes", force: :cascade do |t|
     t.string "description"
   end
-  
+
   add_foreign_key "inv_accessories", "accessories"
   add_foreign_key "inv_accessories", "sizes"
-  add_foreign_key "inv_animals", "animals"
 end

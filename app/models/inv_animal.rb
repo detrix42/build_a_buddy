@@ -1,4 +1,4 @@
 class InvAnimal < ApplicationRecord
-  # has_one :animal
+  has_one :animal
   
 end
